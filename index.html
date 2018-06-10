@@ -21,9 +21,11 @@
   </div>
     <!-- container for force layout visualisation  -->
     <section id="vis"></section> 
-        <div class="filter">
+
+    <!-- all the activities in the filter block -->
+    <div class="filter">
       <h2>Click to show the students of an activity:</h2>
-     <div class="buttoncontainer"> 
+      <div class="buttoncontainer"> 
         <button id="bowling"></button>
         <p>Bowling</p>
       </div>
@@ -57,6 +59,8 @@
       </div>
       <button id="all"> All</button>
     </div>
+
+
       <img class="logo" src="images/logo_min_en.png">
 
 <script>
@@ -85,7 +89,7 @@ d3.json("data.json", function(json) {
   root.y = h / 4;
  
  
-        // Build the path
+  // Build the path
   var defs = vis.insert("svg:defs")
       .data(["end"]);
  
@@ -161,7 +165,7 @@ function update() {
   
  
 
-  // Append hero name on roll over next to the node as well
+  // Append the amount of students of an activity on roll over next to the node
   nodeEnter.append("text")
       .attr("class", "nodetext")
       .attr("x", 20)
@@ -219,6 +223,7 @@ function click(d) {
     d.children = d._children;
     d._children = null;
   }
+
   //show details of student
   if(d.sort == "person")
   {
@@ -256,6 +261,7 @@ function flatten(root) {
             .transition()
             .duration(750)      
               .attr("height", function(d){
+          //change size
           if(d.sort == "person" &&  d.category == "bowling")
           {
             return d.size;
@@ -286,6 +292,7 @@ function flatten(root) {
             .transition()
             .duration(750)      
               .attr("height", function(d){
+          //change size
           if(d.sort == "person" && d.category == "paintball")
           {
             return d.size;
@@ -316,6 +323,7 @@ function flatten(root) {
             .transition()
             .duration(750)      
               .attr("height", function(d){
+          //change size
           if(d.sort == "person" && d.category == "clubbing")
           {
             return d.size;
@@ -347,6 +355,7 @@ function flatten(root) {
             .transition()
             .duration(750)      
               .attr("height", function(d){
+          //change size
           if(d.sort == "person" && d.category == "tennis")
           {
             return d.size;
@@ -378,6 +387,7 @@ function flatten(root) {
             .transition()
             .duration(750)      
               .attr("height", function(d){
+          //change size
           if(d.sort == "person" && d.category == "fitness")
           {
             return d.size;
@@ -408,6 +418,7 @@ function flatten(root) {
             .transition()
             .duration(750)      
               .attr("height", function(d){
+          //change size
           if(d.sort == "person" && d.category == "cinema")
           {
             return d.size;
@@ -438,6 +449,7 @@ function flatten(root) {
             .transition()
             .duration(750)      
               .attr("height", function(d){
+          //change size
           if(d.sort == "person" && d.category == "volleyball")
           {
             return d.size;
@@ -468,6 +480,7 @@ function flatten(root) {
             .transition()
             .duration(750)      
               .attr("height", function(d){
+          //change size
           if(d.sort == "person" && d.category == "photography")
           {
             return d.size;
@@ -490,11 +503,13 @@ function flatten(root) {
   d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
     });
 
-    //filter 
+
+    //filter to all activities 
     d3.select('#all').on('click', function() {
      vis.selectAll("image")
             .transition()
             .duration(750)      
+      //change size
       .attr("height", function(d){
         if(d.sort == "activity")
         {
@@ -513,8 +528,8 @@ function flatten(root) {
             return "0";
           }
     })
-                    d3.selectAll("#person1").style("opacity", "0");
-                    //change title
+  d3.selectAll("#person1").style("opacity", "0");
+  //change title
   d3.select('#title').text("All activities");
   d3.select('#subtitle').text("")
     });  
