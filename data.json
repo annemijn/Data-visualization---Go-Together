@@ -1,0 +1,533 @@
+{
+   "name": "students",
+   "children": [
+    {
+      "students": "35 students",
+      "sort": "activity",
+      "img":  "images/fitness.png",
+      "size": 35
+    },
+    {
+      "students": "50 students",
+      "sort": "activity",
+      "img":  "images/bowling.png",
+      "size": 50
+    },
+    {
+      "students": "40 students", 
+      "sort": "activity",
+      "img":  "images/basketball.png",
+      "size": 40
+    },
+    {
+      "students": "25 students", 
+      "sort": "activity",
+      "img":  "images/cinema.png",
+      "size": 25
+    },
+    {
+      "students": "28 students", 
+      "sort": "activity",
+      "img":  "images/tennis.png",
+      "size": 28
+    },
+    {
+      "students": "27 students", 
+      "sort": "activity",
+      "img":  "images/photography.png",
+      "size": 27
+    },
+    {
+      "students": "25 students", 
+      "sort": "activity",
+      "img":  "images/visitcafes.png",
+      "size": 25
+    },
+    {
+      "students": "35 students", 
+      "sort": "activity",
+      "img":  "images/paintball.png",
+      "size": 35
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",
+      "name": "Calvin",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling", 
+      "name": "Rick",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.", 
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",
+      "name": "Erik",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",
+      "name": "Laura",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",
+      "name": "Romy",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",
+      "name": "Peter",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",
+      "name": "Eline",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",
+      "name": "Hans",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",      
+      "name": "Stan",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "bowling",
+      "name": "Max",
+      "img":  "images/person_bowling.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "paintball",
+      "name": "Romy",
+      "img":  "images/person_paintball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "paintball",
+      "name": "Peter",
+      "img":  "images/person_paintball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "paintball",
+      "name": "Eline",
+      "img":  "images/person_paintball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "paintball",
+      "name": "Hans",
+      "img":  "images/person_paintball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "paintball",      
+      "name": "Stan",
+      "img":  "images/person_paintball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "paintball",
+      "name": "Max",
+      "img":  "images/person_paintball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "clubbing",
+      "name": "Eline",
+      "img":  "images/person_clubbing.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "clubbing",
+      "name": "Hans",
+      "img":  "images/person_clubbing.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "clubbing",      
+      "name": "Stan",
+      "img":  "images/person_clubbing.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "clubbing",
+      "name": "Max",
+      "img":  "images/person_clubbing.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+    ,
+    {
+      "sort": "person",
+      "category": "tennis",
+      "name": "Max",
+      "img":  "images/person_tennis.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "tennis",
+      "name": "Eline",
+      "img":  "images/person_tennis.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "tennis",
+      "name": "Hans",
+      "img":  "images/person_tennis.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "tennis",      
+      "name": "Stan",
+      "img":  "images/person_tennis.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "tennis",
+      "name": "Max",
+      "img":  "images/person_tennis.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "fitness",
+      "name": "Max",
+      "img":  "images/person_fitness.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+    ,
+    {
+      "sort": "person",
+      "category": "fitness",
+      "name": "Max",
+      "img":  "images/person_fitness.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "fitness",
+      "name": "Eline",
+      "img":  "images/person_fitness.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "fitness",
+      "name": "Hans",
+      "img":  "images/person_fitness.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "fitness",      
+      "name": "Stan",
+      "img":  "images/person_fitness.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "fitness",
+      "name": "Max",
+      "img":  "images/person_fitness.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "cinema",
+      "name": "Eline",
+      "img":  "images/person_cinema.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "cinema",
+      "name": "Hans",
+      "img":  "images/person_cinema.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "cinema",      
+      "name": "Stan",
+      "img":  "images/person_cinema.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "cinema",
+      "name": "Max",
+      "img":  "images/person_cinema.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+    ,
+    {
+      "sort": "person",
+      "category": "volleyball",
+      "name": "Eline",
+      "img":  "images/person_volleyball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "volleyball",
+      "name": "Hans",
+      "img":  "images/person_volleyball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "volleyball",      
+      "name": "Stan",
+      "img":  "images/person_volleyball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "volleyball",
+      "name": "Max",
+      "img":  "images/person_volleyball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "volleyball",
+      "name": "Eline",
+      "img":  "images/person_volleyball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "volleyball",
+      "name": "Hans",
+      "img":  "images/person_volleyball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "volleyball",      
+      "name": "Stan",
+      "img":  "images/person_volleyball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "volleyball",
+      "name": "Max",
+      "img":  "images/person_volleyball.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "photography",
+      "name": "Max",
+      "img":  "images/person_photography.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "photography",
+      "name": "Eline",
+      "img":  "images/person_photography.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "photography",
+      "name": "Hans",
+      "img":  "images/person_photography.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "photography",      
+      "name": "Stan",
+      "img":  "images/person_photography.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",      
+      "size": 50
+    }
+,
+    {
+      "sort": "person",
+      "category": "photography",
+      "name": "Max",
+      "img":  "images/person_photography.png",
+      "age": "19",
+      "icebreaker": "My favorite artist is Coldplay.",
+      "size": 50
+    }
+  ]
+  }

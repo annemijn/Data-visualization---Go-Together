@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>GT2</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen" />
+</head>
+
+<body>
+  <h1 id="title"> All activities</h1>
+  <h2 id="subtitle"></h2>
+  <div id="person1">
+    <h2>Information:</h2>
+    <p id="name">Name: Hans</p>
+    <p id="age">Age: 16</p>
+    <p id="icebreaker">Icebreaker:<br>
+    “ My favorite artist is Coldplay. ”</p>
+    <img class="photo" src="images/photo.png">
+  </div>
+    <!-- container for force layout visualisation  -->
+    <section id="vis"></section> 
+        <div class="filter">
+      <h2>Click to show the students of an activity:</h2>
+     <div class="buttoncontainer"> 
+        <button id="bowling"></button>
+        <p>Bowling</p>
+      </div>
+     <div class="buttoncontainer"> 
+        <button id="paintball"></button>
+        <p>Paintball</p>
+      </div>
+     <div class="buttoncontainer"> 
+        <button id="clubbing"></button>
+        <p>Clubbing</p>
+      </div>
+     <div class="buttoncontainer"> 
+        <button id="tennis"></button>
+        <p>Tennis</p>
+      </div>
+     <div class="buttoncontainer"> 
+        <button id="fitness"></button>
+        <p>Fitness</p>
+      </div>
+     <div class="buttoncontainer"> 
+        <button id="cinema"></button>
+        <p>Cinema</p>
+      </div>
+     <div class="buttoncontainer"> 
+        <button id="volleyball"></button>
+        <p>Volleyball</p>
+      </div>      
+     <div class="buttoncontainer"> 
+        <button id="photography"></button>
+        <p>Photography</p>
+      </div>
+      <button id="all"> All</button>
+    </div>
+      <img class="logo" src="images/logo_min_en.png">
+
+<script>
+
+// some colour variables
+  var tcBlack = "#130C0E";
+
+// rest of vars
+var w = 1200,
+ h = 580,
+    maxNodeSize = 50,
+    x_browser = 10,
+    y_browser = 10,
+    root;
+ 
+var vis;
+var force = d3.layout.force(); 
+
+vis = d3.select("#vis").append("svg").attr("width", w).attr("height", h);
+ 
+d3.json("data.json", function(json) {
+ 
+  root = json;
+  root.fixed = true;
+  root.x = w / 2;
+  root.y = h / 4;
+ 
+ 
+        // Build the path
+  var defs = vis.insert("svg:defs")
+      .data(["end"]);
+ 
+ 
+  defs.enter().append("svg:path")
+      .attr("d", "M0,-5L10,0L0,5");
+ 
+     update();
+});
+ 
+ 
+/**
+ *   
+ */
+function update() {
+  var nodes = flatten(root),
+      links = d3.layout.tree().links(nodes);
+ 
+  // Restart the force layout.
+  force.nodes(nodes)
+        .links(links)
+        .gravity(0.05)
+    .charge(-1500)
+    .linkDistance(200)
+    .friction(0.5)
+    .linkStrength(function(l, i) {return 1; })
+    .size([w, h])
+    .on("tick", tick)
+        .start();
+ 
+ 
+  // Update the nodes…
+  var node = vis.selectAll("g.node")
+      .data(nodes, function(d) { return d.id; });
+ 
+ 
+  // Enter any new nodes.
+  var nodeEnter = node.enter().append("svg:g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      .on("click", click)
+      .call(force.drag);
+ 
+  // Append a circle
+  nodeEnter.append("svg:circle")
+      .attr("r", function(d) { return Math.sqrt(d.size) / 10 || 4.5; })
+      .style("fill", "transparent");
+ 
+   
+  // Append images
+  var images = nodeEnter.append("svg:image")
+        .attr("xlink:href",  function(d) { return d.img;})
+        .attr("x", function(d) { return -25;})
+        .attr("y", function(d) { return -25;})
+        .attr("height", function(d){
+          if(d.sort == "activity")
+          {
+            return d.size * 4;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "activity")
+          {
+            return d.size * 4;
+          }
+          else{
+            return "0";
+          }
+        })  
+  
+ 
+
+  // Append hero name on roll over next to the node as well
+  nodeEnter.append("text")
+      .attr("class", "nodetext")
+      .attr("x", 20)
+      .attr("y", 55)
+      .attr("fill", tcBlack)
+      .text(function(d) { return d.students; });
+ 
+ 
+  // Exit any old nodes.
+  node.exit().remove();
+ 
+ 
+  // Re-select for update.
+  path = vis.selectAll("path.link");
+  node = vis.selectAll("g.node");
+ 
+function tick() {
+ 
+ 
+    path.attr("d", function(d) {
+ 
+     var dx = d.target.x - d.source.x,
+           dy = d.target.y - d.source.y,
+           dr = Math.sqrt(dx * dx + dy * dy);
+           return   "M" + d.source.x + "," 
+            + d.source.y 
+            + "A" + dr + "," 
+            + dr + " 0 0,1 " 
+            + d.target.x + "," 
+            + d.target.y;
+  });
+    node.attr("transform", nodeTransform);    
+  }
+}
+
+ 
+/**
+ * Gives the coordinates of the border for keeping the nodes inside a frame
+ * http://bl.ocks.org/mbostock/1129492
+ */ 
+function nodeTransform(d) {
+  d.x =  Math.max(maxNodeSize, Math.min(w - (d.imgwidth/2 || 16), d.x));
+    d.y =  Math.max(maxNodeSize, Math.min(h - (d.imgheight/2 || 16), d.y));
+    return "translate(" + d.x + "," + d.y + ")";
+   }
+ 
+/**
+ * Toggle children on click.
+ */ 
+function click(d) {
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+  //show details of student
+  if(d.sort == "person")
+  {
+    d3.selectAll("#person1").style("display", "block");
+      d3.select('#name').text("Name: " + d.name);
+      d3.select('#age').text("Age: " + d.age);      
+      d3.select('#icebreaker').text("Icebreaker: " + d.icebreaker);
+  }
+  update();
+}
+ 
+ 
+/**
+ * Returns a list of all nodes under the root.
+ */ 
+function flatten(root) {
+  var nodes = []; 
+  var i = 0;
+ 
+  function recurse(node) {
+    if (node.children) 
+      node.children.forEach(recurse);
+    if (!node.id) 
+      node.id = ++i;
+    nodes.push(node);
+  }
+ 
+  recurse(root);
+  return nodes;
+} 
+
+    //filter bowling
+    d3.select('#bowling').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+              .attr("height", function(d){
+          if(d.sort == "person" &&  d.category == "bowling")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "person" && d.category == "bowling")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })
+//change title
+  d3.select('#title').text("Bowling");
+  d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
+    });
+
+
+
+//filter paintball
+    d3.select('#paintball').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+              .attr("height", function(d){
+          if(d.sort == "person" && d.category == "paintball")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "person" && d.category == "paintball")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })
+//change title
+  d3.select('#title').text("Paintball");
+  d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
+    });
+
+
+
+//filter clubbing
+    d3.select('#clubbing').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+              .attr("height", function(d){
+          if(d.sort == "person" && d.category == "clubbing")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "person" && d.category == "clubbing")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })
+//change title
+  d3.select('#title').text("Clubbing");
+  d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
+    });
+
+
+
+
+//filter tennis
+    d3.select('#tennis').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+              .attr("height", function(d){
+          if(d.sort == "person" && d.category == "tennis")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "person" && d.category == "tennis")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })
+//change title
+  d3.select('#title').text("Tennis");
+  d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
+    });
+
+
+
+
+//filter fitness
+    d3.select('#fitness').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+              .attr("height", function(d){
+          if(d.sort == "person" && d.category == "fitness")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "person" && d.category == "fitness")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })
+//change title
+  d3.select('#title').text("Fitness");
+  d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
+    });
+
+
+
+//filter cinema
+    d3.select('#cinema').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+              .attr("height", function(d){
+          if(d.sort == "person" && d.category == "cinema")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "person" && d.category == "cinema")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })
+//change title
+  d3.select('#title').text("Cinema");
+  d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
+    });
+
+
+
+//filter volleyball
+    d3.select('#volleyball').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+              .attr("height", function(d){
+          if(d.sort == "person" && d.category == "volleyball")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "person" && d.category == "volleyball")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })
+//change title
+  d3.select('#title').text("Volleyball");
+  d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
+    });
+
+
+
+//filter photography
+    d3.select('#photography').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+              .attr("height", function(d){
+          if(d.sort == "person" && d.category == "photography")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })  
+        .attr("width", function(d){
+          if(d.sort == "person" && d.category == "photography")
+          {
+            return d.size;
+          }
+          else{
+            return "0";
+          }
+        })
+//change title
+  d3.select('#title').text("Photography");
+  d3.select('#subtitle').text("Every circle is a student. Click on a student for more details")
+    });
+
+    //filter 
+    d3.select('#all').on('click', function() {
+     vis.selectAll("image")
+            .transition()
+            .duration(750)      
+      .attr("height", function(d){
+        if(d.sort == "activity")
+        {
+          return d.size * 4;
+        }
+        else{
+          return "0";
+        }
+        }) 
+                .attr("width", function(d){
+          if(d.sort == "activity")
+          {
+            return d.size * 4;
+          }
+          else{
+            return "0";
+          }
+    })
+                    d3.selectAll("#person1").style("opacity", "0");
+                    //change title
+  d3.select('#title').text("All activities");
+  d3.select('#subtitle').text("")
+    });  
+  
+</script>
+
+</body>
+</html>
