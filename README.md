@@ -1,5 +1,5 @@
 # Data-visualization Go-Together
-<h2>This visualization will show the participants of the intro week. Each circle shows an activity. If you filter on an activity you will see the students and their information who will do the activity. With this data visualization the student has the opportunity to make contact with the participants of the intro week.</h2>
+<h3>This visualization will show the participants of the intro week. Each circle shows an activity. If you filter on an activity you will see the students and their information who will do the activity. With this data visualization the student has the opportunity to make contact with the participants of the intro week.</h3>
 
 ## Code Example
 Click on data.json to see all the data.
